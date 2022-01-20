@@ -58,7 +58,7 @@ public class TennisGame2 implements TennisGame
         }
         if (P2point>=4 && P1point>=0 && (P2point-P1point)>=2)
         {
-            score = WIN_FOR_PLAYER_2;
+            return WIN_FOR_PLAYER_2;
         }
         return score;
     }
