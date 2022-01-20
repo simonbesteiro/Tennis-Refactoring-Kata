@@ -66,8 +66,8 @@ public class TennisTest2 {
                 { 4, 6,  "player1", "player2",  "Win for player2"},
                 { 16, 14,  "player1", "player2",  "Win for player1"},
                 { 14, 16,  "player1", "player2",  "Win for player2"},
-                { 14, 16,  "playerA", "playerB",  "Win for playerB"},
-
+                { 16, 14,  "playerA", "playerB",  "Win for playerA"},
+                { 14, 16,  "playerA", "playerB",  "Win for playerB"}
         });
     }
 

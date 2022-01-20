@@ -1,8 +1,5 @@
 
-public class TennisGame2 implements TennisGame
-{
-    public static final String WIN_FOR_PLAYER_2 = "Win for player2";
-    public static final String WIN_FOR_PLAYER_1 = "Win for player1";
+public class TennisGame2 implements TennisGame {
     public static final String ADVANTAGE_PLAYER_1 = "Advantage player1";
     public static final String ADVANTAGE_PLAYER_2 = "Advantage player2";
     public int P1point = 0;
@@ -16,53 +13,45 @@ public class TennisGame2 implements TennisGame
         this.player2Name = player2Name;
     }
 
-    public String getScore(){
+    public String getScore() {
         String score = "";
-        if (P1point == P2point && P1point < 4)
-        {
+        if (P1point == P2point && P1point < 4) {
             score = getDefaultScore(P1point) + "-All";
         }
-        if (P1point == P2point && P1point >= 3){
+        if (P1point == P2point && P1point >= 3) {
             score = "Deuce";
         }
-        if (P1point > 0 && P2point==0)
-        {
+        if (P1point > 0 && P2point == 0) {
             score = getGameScore(P1point, P2point);
         }
-        if (P2point > 0 && P1point==0)
-        {
-            score =  getGameScore(P1point, P2point);
+        if (P2point > 0 && P1point == 0) {
+            score = getGameScore(P1point, P2point);
         }
-        if (P1point>P2point && P1point < 4)
-        {
-            score =  getGameScore(P1point, P2point);
+        if (P1point > P2point && P1point < 4) {
+            score = getGameScore(P1point, P2point);
         }
-        if (P2point>P1point && P2point < 4)
-        {
-            score =  getGameScore(P1point, P2point);
+        if (P2point > P1point && P2point < 4) {
+            score = getGameScore(P1point, P2point);
         }
 
-        if (P1point > P2point && P2point >= 3)
-        {
+        if (P1point > P2point && P2point >= 3) {
             score = ADVANTAGE_PLAYER_1;
         }
 
-        if (P2point > P1point && P1point >= 3)
-        {
+        if (P2point > P1point && P1point >= 3) {
             score = ADVANTAGE_PLAYER_2;
         }
 
-        if (P1point>=4 && P2point>=0 && (P1point-P2point)>=2)
-        {
-            return WIN_FOR_PLAYER_1;
+        if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
+            return "Win for " + player1Name;
         }
-        if (P2point>=4 && P1point>=0 && (P2point-P1point)>=2)
-        {
-            return WIN_FOR_PLAYER_2;
+        if (P2point >= 4 && P1point >= 0 && (P2point - P1point) >= 2) {
+            return "Win for " + player2Name;
         }
         return score;
     }
-    private static boolean hasAdvantageOver(int playerAPoints, int playerBPoints){
+
+    private static boolean hasAdvantageOver(int playerAPoints, int playerBPoints) {
         //player A have more or equals than 3 points
         boolean isAOverThresshold = playerAPoints >= 3;
         //player b have more or equals than 3 points
@@ -78,14 +67,14 @@ public class TennisGame2 implements TennisGame
     }
 
     private static String getDefaultScore(int playerPoints) {
-        if (playerPoints==1) return "Fifteen";
-        if (playerPoints==2) return "Thirty";
-        if (playerPoints==3) return "Forty";
+        if (playerPoints == 1) return "Fifteen";
+        if (playerPoints == 2) return "Thirty";
+        if (playerPoints == 3) return "Forty";
         return "Love";
     }
 
     public void wonPoint(String player) {
-        if (player == "player1")
+        if (player == player1Name)
             P1point++;
         else
             P2point++;
