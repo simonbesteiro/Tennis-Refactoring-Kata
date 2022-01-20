@@ -14,18 +14,24 @@ public class TennisGame2 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
-        if (P1point == P2point && P1point < 4) {
-            score = getDefaultScore(P1point) + "-All";
+
+        if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
+            return "Win for " + player1Name;
+        }
+        if (P2point >= 4 && P1point >= 0 && (P2point - P1point) >= 2) {
+            return "Win for " + player2Name;
         }
         if (P1point == P2point && P1point >= 3) {
-            score = "Deuce";
+            return "Deuce";
+        }
+        if (P1point == P2point && P1point < 4) {
+            return getDefaultScore(P1point) + "-All";
         }
         if (P1point > 0 && P2point == 0) {
-            score = getGameScore(P1point, P2point);
+            return getGameScore(P1point, P2point);
         }
         if (P2point > 0 && P1point == 0) {
-            score = getGameScore(P1point, P2point);
+            return getGameScore(P1point, P2point);
         }
         if (P1point > P2point && P1point < 4) {
             return getGameScore(P1point, P2point);
@@ -42,13 +48,8 @@ public class TennisGame2 implements TennisGame {
             return ADVANTAGE_PLAYER_2;
         }
 
-        if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
-            return "Win for " + player1Name;
-        }
-        if (P2point >= 4 && P1point >= 0 && (P2point - P1point) >= 2) {
-            return "Win for " + player2Name;
-        }
-        return score;
+
+        return "";
     }
 
     private static boolean hasAdvantageOver(int playerAPoints, int playerBPoints) {
