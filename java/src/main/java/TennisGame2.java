@@ -28,18 +28,18 @@ public class TennisGame2 implements TennisGame {
             score = getGameScore(P1point, P2point);
         }
         if (P1point > P2point && P1point < 4) {
-            score = getGameScore(P1point, P2point);
+            return getGameScore(P1point, P2point);
         }
         if (P2point > P1point && P2point < 4) {
-            score = getGameScore(P1point, P2point);
+            return getGameScore(P1point, P2point);
         }
 
-        if (P1point > P2point && P2point >= 3) {
-            score = ADVANTAGE_PLAYER_1;
+        if (hasAdvantageOver(P1point, P2point)) {
+            return ADVANTAGE_PLAYER_1;
         }
 
-        if (P2point > P1point && P1point >= 3) {
-            score = ADVANTAGE_PLAYER_2;
+        if (hasAdvantageOver(P2point, P1point)) {
+            return ADVANTAGE_PLAYER_2;
         }
 
         if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
