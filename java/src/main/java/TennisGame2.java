@@ -62,6 +62,16 @@ public class TennisGame2 implements TennisGame
         }
         return score;
     }
+    private static boolean hasAdvantageOver(int playerAPoints, int playerBPoints){
+        //player A have more or equals than 3 points
+        boolean isAOverThresshold = playerAPoints >= 3;
+        //player b have more or equals than 3 points
+        boolean isBOverThresshold = playerBPoints >= 3;
+        //player a has one point more player b
+        boolean isAOneOver = playerAPoints - playerBPoints == 1;
+
+        return isAOverThresshold && isBOverThresshold && isAOneOver;
+    }
 
     private static String getGameScore(int playerOnePoints, int playerTwoPoints) {
         return getDefaultScore(playerOnePoints) + "-" + getDefaultScore(playerTwoPoints);
