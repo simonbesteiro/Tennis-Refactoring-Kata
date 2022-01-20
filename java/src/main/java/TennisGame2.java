@@ -21,32 +21,19 @@ public class TennisGame2 implements TennisGame {
         if (P2point >= 4 && P1point >= 0 && (P2point - P1point) >= 2) {
             return "Win for " + player2Name;
         }
-        if (P1point == P2point && P1point >= 3) {
-            return "Deuce";
-        }
-        if (P1point == P2point && P1point < 4) {
-            return getDefaultScore(P1point) + "-All";
-        }
-        if (P1point > 0 && P2point == 0) {
-            return getGameScore(P1point, P2point);
-        }
-        if (P2point > 0 && P1point == 0) {
-            return getGameScore(P1point, P2point);
-        }
-        if (P1point > P2point && P1point < 4) {
-            return getGameScore(P1point, P2point);
-        }
-        if (P2point > P1point && P2point < 4) {
-            return getGameScore(P1point, P2point);
-        }
         if (hasAdvantageOver(P1point, P2point)) {
             return ADVANTAGE_PLAYER_1;
         }
         if (hasAdvantageOver(P2point, P1point)) {
             return ADVANTAGE_PLAYER_2;
         }
-
-        return "";
+        if (P1point == P2point && P1point >= 3) {
+            return "Deuce";
+        }
+        if (P1point == P2point && P1point < 4) {
+            return getDefaultScore(P1point) + "-All";
+        }
+        return getGameScore(P1point, P2point);
     }
 
     private static boolean hasAdvantageOver(int playerAPoints, int playerBPoints) {
