@@ -38,13 +38,13 @@ public class TennisGame2 implements TennisGame {
 
     private static boolean hasAdvantageOver(int playerAPoints, int playerBPoints) {
         //player A have more or equals than 3 points
-        boolean isAOverThresshold = playerAPoints >= 3;
+        boolean isAOOverThreshold = playerAPoints >= 3;
         //player b have more or equals than 3 points
-        boolean isBOverThresshold = playerBPoints >= 3;
+        boolean isBOOverThreshold = playerBPoints >= 3;
         //player a has one point more player b
         boolean isAOneOver = playerAPoints - playerBPoints == 1;
 
-        return isAOverThresshold && isBOverThresshold && isAOneOver;
+        return isAOOverThreshold && isBOOverThreshold && isAOneOver;
     }
 
     private static String getGameScore(int playerOnePoints, int playerTwoPoints) {
