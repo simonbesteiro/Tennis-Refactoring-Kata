@@ -33,7 +33,7 @@ public class TennisGame1 implements TennisGame {
             else score = "Win for "+ player2Name;
 
         } else {
-            score = getDefaultScore(score, player1Score) + "-" + getDefaultScore(score, player2Score);
+           return getDefaultScore("", player1Score) + "-" + getDefaultScore("", player2Score);
         }
         return score;
     }
