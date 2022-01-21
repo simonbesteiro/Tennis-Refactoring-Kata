@@ -10,7 +10,7 @@ public class TennisGame1 implements TennisGame {
     private final String player1Name;
     private final String player2Name;
 
-    private final Map<Integer, String> pointsTranslation = Map.of(0,"Love", 1, "Fifteen", 2, "Thirty", 3,"Forty" );
+    private final Map<Integer, String> pointsTranslation = Map.of(0, "Love", 1, "Fifteen", 2, "Thirty", 3, "Forty");
 
     public TennisGame1(String player1Name, String player2Name) {
         this.player1Name = player1Name;
@@ -29,19 +29,33 @@ public class TennisGame1 implements TennisGame {
             return getScoreWhenEqual();
         }
 
-        if (player1Score >= 4 || player2Score >= 4) {
-            int pointDifference = player1Score - player2Score;
-            
-            if (pointDifference > 0) return getPlayerStatus(pointDifference, player1Name);
-            return getPlayerStatus(Math.abs(pointDifference), player2Name);
+        int pointDifference = player1Score - player2Score;
+        if (playerIsInAdvantage()) {
+            return ADVANTAGE + getPlayer(pointDifference);
+        }
+
+        if (playerWon()) {
+            return WIN_FOR + getPlayer(pointDifference);
         }
 
         return getDefaultScore(player1Score) + "-" + getDefaultScore(player2Score);
     }
 
-    private String getPlayerStatus(int pointsDiff, String playerName){
-        if (pointsDiff == 1) return ADVANTAGE+playerName;
-        return  WIN_FOR+ playerName;
+    private String getPlayer(int pointDifference) {
+        return pointDifference > 0 ? player1Name : player2Name;
+    }
+
+    private boolean playerWon() {
+        return (player1Score > 3 || player2Score > 3) && Math.abs(player1Score - player2Score) >= 2;
+    }
+
+    private boolean playerIsInAdvantage() {
+        return player1Score >= 3 && player2Score >= 3 && Math.abs(player1Score - player2Score) == 1;
+    }
+
+    private String getPlayerStatus(int pointsDiff, String playerName) {
+        if (pointsDiff == 1) return ADVANTAGE + playerName;
+        return WIN_FOR + playerName;
     }
 
     private boolean scoreIsEqual() {
@@ -49,12 +63,12 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getDefaultScore(int tempScore) {
-       return pointsTranslation.get(tempScore);
+        return pointsTranslation.get(tempScore);
     }
 
     private String getScoreWhenEqual() {
-        if(player1Score <= 2) {
-            return pointsTranslation.get(player1Score)+"-All";
+        if (player1Score <= 2) {
+            return pointsTranslation.get(player1Score) + "-All";
         }
 
         return "Deuce";
