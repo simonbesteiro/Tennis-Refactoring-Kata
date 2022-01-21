@@ -23,7 +23,7 @@ public class TennisGame1 implements TennisGame {
         String score = "";
 
         if (player1Score == player2Score) {
-            score = getScoreWhenEqual();
+            return getScoreWhenEqual();
         } else if (player1Score >= 4 || player2Score >= 4) {
 
             int pointDifference = player1Score - player2Score;
