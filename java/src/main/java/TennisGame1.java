@@ -20,22 +20,24 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
-
-        if (player1Score == player2Score) {
+        if (scoreIsEqual()) {
             return getScoreWhenEqual();
-        } else if (player1Score >= 4 || player2Score >= 4) {
-
-            int pointDifference = player1Score - player2Score;
-            if (pointDifference == 1) score = "Advantage "+ player1Name;
-            else if (pointDifference == -1) score = "Advantage "+ player2Name ;
-            else if (pointDifference >= 2) score = "Win for "+player1Name;
-            else score = "Win for "+ player2Name;
-
-        } else {
-           return getDefaultScore("", player1Score) + "-" + getDefaultScore("", player2Score);
         }
-        return score;
+
+        if (player1Score >= 4 || player2Score >= 4) {
+            int pointDifference = player1Score - player2Score;
+
+            if (pointDifference == 1) return "Advantage " + player1Name;
+            else if (pointDifference == -1) return "Advantage " + player2Name;
+            else if (pointDifference >= 2) return "Win for " + player1Name;
+            else return "Win for " + player2Name;
+        }
+
+        return getDefaultScore("", player1Score) + "-" + getDefaultScore("", player2Score);
+    }
+
+    private boolean scoreIsEqual() {
+        return player1Score == player2Score;
     }
 
     private String getDefaultScore(String score, int tempScore) {
