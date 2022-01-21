@@ -33,29 +33,24 @@ public class TennisGame1 implements TennisGame {
             else return "Win for " + player2Name;
         }
 
-        return getDefaultScore("", player1Score) + "-" + getDefaultScore("", player2Score);
+        return getDefaultScore(player1Score) + "-" + getDefaultScore(player2Score);
     }
 
     private boolean scoreIsEqual() {
         return player1Score == player2Score;
     }
 
-    private String getDefaultScore(String score, int tempScore) {
+    private String getDefaultScore(int tempScore) {
         switch (tempScore) {
             case 0:
-                score += "Love";
-                break;
+                return "Love";
             case 1:
-                score += "Fifteen";
-                break;
+                return "Fifteen";
             case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
+                return "Thirty";
+            default:
+                return "Forty";
         }
-        return score;
     }
 
     private String getScoreWhenEqual() {
