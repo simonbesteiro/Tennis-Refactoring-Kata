@@ -31,14 +31,17 @@ public class TennisGame1 implements TennisGame {
 
         if (player1Score >= 4 || player2Score >= 4) {
             int pointDifference = player1Score - player2Score;
-
-            if (pointDifference == 1) return ADVANTAGE + player1Name;
-            else if (pointDifference == -1) return ADVANTAGE + player2Name;
-            else if (pointDifference >= 2) return WIN_FOR + player1Name;
-            else return WIN_FOR + player2Name;
+            
+            if (pointDifference > 0) return getPlayerStatus(pointDifference, player1Name);
+            return getPlayerStatus(Math.abs(pointDifference), player2Name);
         }
 
         return getDefaultScore(player1Score) + "-" + getDefaultScore(player2Score);
+    }
+
+    private String getPlayerStatus(int pointsDiff, String playerName){
+        if (pointsDiff == 1) return ADVANTAGE+playerName;
+        return  WIN_FOR+ playerName;
     }
 
     private boolean scoreIsEqual() {
