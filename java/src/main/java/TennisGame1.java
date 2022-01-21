@@ -53,11 +53,6 @@ public class TennisGame1 implements TennisGame {
         return player1Score >= 3 && player2Score >= 3 && Math.abs(player1Score - player2Score) == 1;
     }
 
-    private String getPlayerStatus(int pointsDiff, String playerName) {
-        if (pointsDiff == 1) return ADVANTAGE + playerName;
-        return WIN_FOR + playerName;
-    }
-
     private boolean scoreIsEqual() {
         return player1Score == player2Score;
     }
