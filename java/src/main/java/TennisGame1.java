@@ -4,8 +4,8 @@ public class TennisGame1 implements TennisGame {
 
     private int player1Score = 0;
     private int player2Score = 0;
-    private String player1Name;
-    private String player2Name;
+    private final String player1Name;
+    private final String player2Name;
 
     public TennisGame1(String player1Name, String player2Name) {
         this.player1Name = player1Name;
@@ -13,7 +13,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (Objects.equals(playerName, "player1"))
+        if (Objects.equals(playerName, player1Name))
             player1Score += 1;
         else
             player2Score += 1;
@@ -27,10 +27,10 @@ public class TennisGame1 implements TennisGame {
         } else if (player1Score >= 4 || player2Score >= 4) {
 
             int pointDifference = player1Score - player2Score;
-            if (pointDifference == 1) score = "Advantage player1";
-            else if (pointDifference == -1) score = "Advantage player2";
-            else if (pointDifference >= 2) score = "Win for player1";
-            else score = "Win for player2";
+            if (pointDifference == 1) score = "Advantage "+ player1Name;
+            else if (pointDifference == -1) score = "Advantage "+ player2Name ;
+            else if (pointDifference >= 2) score = "Win for "+player1Name;
+            else score = "Win for "+ player2Name;
 
         } else {
             score = getDefaultScore(score, player1Score) + "-" + getDefaultScore(score, player2Score);
