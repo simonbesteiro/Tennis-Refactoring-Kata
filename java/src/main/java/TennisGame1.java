@@ -3,6 +3,8 @@ import java.util.Objects;
 
 public class TennisGame1 implements TennisGame {
 
+    public static final String ADVANTAGE = "Advantage ";
+    public static final String WIN_FOR = "Win for ";
     private int player1Score = 0;
     private int player2Score = 0;
     private final String player1Name;
@@ -30,10 +32,10 @@ public class TennisGame1 implements TennisGame {
         if (player1Score >= 4 || player2Score >= 4) {
             int pointDifference = player1Score - player2Score;
 
-            if (pointDifference == 1) return "Advantage " + player1Name;
-            else if (pointDifference == -1) return "Advantage " + player2Name;
-            else if (pointDifference >= 2) return "Win for " + player1Name;
-            else return "Win for " + player2Name;
+            if (pointDifference == 1) return ADVANTAGE + player1Name;
+            else if (pointDifference == -1) return ADVANTAGE + player2Name;
+            else if (pointDifference >= 2) return WIN_FOR + player1Name;
+            else return WIN_FOR + player2Name;
         }
 
         return getDefaultScore(player1Score) + "-" + getDefaultScore(player2Score);
